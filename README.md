@@ -48,13 +48,14 @@ This second pipeline represents a more common approach to ALPR. Using YOLO, the 
 
 #### Done:
 - Clearly defined the model and techniques to be used.
-- Creation of two pipelines to experiment with.
+- Creation of two pipelines to experiment with (Only Mercosul plates).
 - Creation of first test dataset to experiment with pipeline 1. (Around 120 images)
 - Creation of small script for model inference via image, video or webcam.
 
 #### In progress
 - Expantion of the dataset to make a reliable model and also experiment pipeline 2. 500 images minimum, 1000 images is the goal for flexibility.
 - Creation of a small script to run inference easily via CLI.
+- Support the old plate format
 
 #### To Do
 - Research a way to maybe create a better, more efficient, third pipeline.
