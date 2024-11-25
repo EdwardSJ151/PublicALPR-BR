@@ -1,6 +1,29 @@
 # YoloALPR
 The objective of this repo is to create effective methods of ALPR for brazilian license plates, using YOLO as the backbone of the project.
 
+### How to Use
+1. Clone the repo:
+```bash
+git clone https://github.com/EdwardSJ151/PublicALPR-BR.git
+```
+
+2. Add you images/videos in the `imgAndVideos` directory
+
+3. Run `main.py` using image inference, video inference or webcam inference:
+```bash
+python main.py --mode image --input_path ./imgAndVideos/img1.jpg --network_size 992,736
+```
+```bash
+python main.py --mode video --input_path ./imgAndVideos/video1.mp4
+```
+```bash
+python script.py --mode webcam --network_size 992,736
+```
+
+**Note:** The current model is only available in the network_size of `992, 736`. If an issue is ever opened for another dimension size, I will train a model for that size with an adapted version of the dataset to best fit it and add it here.
+
+**Disclaimer:** If the `ESC` key isn't used to exit out of the cv2 GUI, your machine will not close it correctly, leading to issues.
+
 ### What is YOLO and YOLOv4-tiny, and why use it?
 YOLO (You Only Look Once) is an Convolutional Neural Network object detection algorithm which, unlike other object detection algorithms that have a pipeline where the objects in the image need to have their location detected, and only then they can be classified, YOLO embraces the "You Only Look Once" title and does the detection in a single step, effectively reducing processing time for inference drastically compared to other models but maintaining competitive results, which is why it is being used. Since with most ALPR application, quick inference is needed, this is a great model to use, and will be what most of the project will use. 
 
