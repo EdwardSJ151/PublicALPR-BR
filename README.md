@@ -22,6 +22,8 @@ python script.py --mode webcam --network_size 992,736
 
 **Note:** The current model is only available in the network_size of `992, 736`. If an issue is ever opened for another dimension size, I will train a model for that size with an adapted version of the dataset to best fit it and add it here.
 
+**Note 2:** The current model only supports MERCOSUL plates. In due time all plates will be compatible.
+
 **Disclaimer:** If the `ESC` key isn't used to exit out of the cv2 GUI, your machine will not close it correctly, leading to issues.
 
 ### What is YOLO and YOLOv4-tiny, and why use it?
