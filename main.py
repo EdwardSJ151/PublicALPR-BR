@@ -24,7 +24,7 @@ def load_model(model_path, network_size):
     return model, class_names
 
 
-def process_image(image_path, model, class_names, output_folder):
+def process_image(image_path, model, class_names, output_folder, model_path):
     """Perform inference on an image."""
     frame = cv2.imread(image_path)
     classes, scores, boxes = model.detect(frame, 0.1, 0.2)
@@ -37,18 +37,18 @@ def process_image(image_path, model, class_names, output_folder):
 
     # Save result
     os.makedirs(output_folder, exist_ok=True)
-    last_folder = os.path.basename(os.path.normpath(os.path.dirname(image_path)))
+    last_folder = os.path.basename(os.path.normpath(model_path))
     output_file = f"{os.path.splitext(os.path.basename(image_path))[0]}_{last_folder}_result.jpg"
     output_path = os.path.join(output_folder, output_file)
     cv2.imwrite(output_path, frame)
     print(f"Image result saved to {output_path}")
 
 
-def process_video(video_path, model, class_names, output_folder):
+def process_video(video_path, model, class_names, output_folder, model_path):
     """Perform inference on a video."""
     cap = cv2.VideoCapture(video_path)
     os.makedirs(output_folder, exist_ok=True)
-    last_folder = os.path.basename(os.path.normpath(os.path.dirname(video_path)))
+    last_folder = os.path.basename(os.path.normpath(model_path))
     output_file = f"{os.path.splitext(os.path.basename(video_path))[0]}_{last_folder}_result.avi"
     output_path = os.path.join(output_folder, output_file)
 
@@ -126,12 +126,12 @@ def main():
     if args.mode == "image":
         if not args.input_path:
             raise ValueError("Input path is required for image mode")
-        process_image(args.input_path, model, class_names, args.output_path)
+        process_image(args.input_path, model, class_names, args.output_path, args.model_path)
 
     elif args.mode == "video":
         if not args.input_path:
             raise ValueError("Input path is required for video mode")
-        process_video(args.input_path, model, class_names, args.output_path)
+        process_video(args.input_path, model, class_names, args.output_path, args.model_path)
 
     elif args.mode == "webcam":
         process_webcam(model, class_names)

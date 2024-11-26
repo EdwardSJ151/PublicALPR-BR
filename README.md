@@ -17,7 +17,7 @@ python main.py --mode image --input_path ./imgAndVideos/img1.jpg --network_size 
 python main.py --mode video --input_path ./imgAndVideos/video1.mp4
 ```
 ```bash
-python script.py --mode webcam --model_path ./model/diffPlate --network_size 992,736
+python main.py --mode webcam --model_path ./model/diffPlate --network_size 992,736
 ```
 
 **Note:** Each model has its own dimension size, set the size accordingly. You can check the size opening the .cfg or looking at the readme in the model folder. If an issue is ever opened for another dimension size, I will train a model for that size with an adapted version of the dataset to best fit it and add it here.
