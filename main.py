@@ -37,7 +37,9 @@ def process_image(image_path, model, class_names, output_folder):
 
     # Save result
     os.makedirs(output_folder, exist_ok=True)
-    output_path = os.path.join(output_folder, os.path.basename(image_path).replace(".jpg", "_result.jpg"))
+    last_folder = os.path.basename(os.path.normpath(os.path.dirname(image_path)))
+    output_file = f"{os.path.splitext(os.path.basename(image_path))[0]}_{last_folder}_result.jpg"
+    output_path = os.path.join(output_folder, output_file)
     cv2.imwrite(output_path, frame)
     print(f"Image result saved to {output_path}")
 
@@ -46,7 +48,10 @@ def process_video(video_path, model, class_names, output_folder):
     """Perform inference on a video."""
     cap = cv2.VideoCapture(video_path)
     os.makedirs(output_folder, exist_ok=True)
-    output_path = os.path.join(output_folder, os.path.basename(video_path).replace(".mp4", "_result.avi"))
+    last_folder = os.path.basename(os.path.normpath(os.path.dirname(video_path)))
+    output_file = f"{os.path.splitext(os.path.basename(video_path))[0]}_{last_folder}_result.avi"
+    output_path = os.path.join(output_folder, output_file)
+
 
     # Get video properties
     fourcc = cv2.VideoWriter_fourcc(*'XVID')
@@ -106,7 +111,7 @@ def process_webcam(model, class_names):
 def main():
     parser = argparse.ArgumentParser(description="Run inference on an image, video, or webcam feed.")
     parser.add_argument("--mode", type=str, choices=["image", "video", "webcam"], required=True, help="Inference mode: 'image', 'video', or 'webcam'")
-    parser.add_argument("--model_path", type=str, default="./model", help="Path to the model directory")
+    parser.add_argument("--model_path", type=str, default="./model/mercosulFullPlate", help="Path to the model directory")
     parser.add_argument("--input_path", type=str, help="Path to the input image or video file (required for image/video modes)")
     parser.add_argument("--output_path", type=str, default="./inferenceResults", help="Path to save the inference results (for image/video modes)")
     parser.add_argument("--network_size", type=str, default="992,736", help="Network input size as 'width,height' (default: 992,736)")

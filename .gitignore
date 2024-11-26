@@ -1,1 +1,3 @@
 /tests
+imgAndVideos/*.mp4
+inferenceResults/*.avi
