@@ -1,4 +1,4 @@
-# Warining
+# Warning
 Code currently needs fixing, the models will work but with subpar quality. Fixes are on the way. 
 
 # YoloALPR
