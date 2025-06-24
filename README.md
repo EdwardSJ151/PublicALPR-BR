@@ -1,3 +1,6 @@
+# Warining
+Code currently needs fixing, the models will work but with subpar quality. Fixes are on the way. 
+
 # YoloALPR
 The objective of this repo is to create effective methods of ALPR for brazilian license plates, using YOLO as the backbone of the project.
 
